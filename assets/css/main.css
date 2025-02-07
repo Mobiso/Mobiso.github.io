@@ -1512,10 +1512,18 @@ input, select, textarea {
 				}
 
 		}
+/* Contact me form */
+#contact {
+    background-color: rgba(255, 255, 255, 0.05); /* Light semi-transparent background */
+    color: #333; /* Dark text for better readability */
+    border-radius: 100px; /* Optional: adds rounded corners */
+   
+}
 
 /* Main */
 
 	#main {
+		background-color: rgba(255, 255, 255, 0.05);
 		-moz-flex-grow: 1;
 		-webkit-flex-grow: 1;
 		-ms-flex-grow: 1;
