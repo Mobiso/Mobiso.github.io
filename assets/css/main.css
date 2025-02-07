@@ -600,6 +600,8 @@ input, select, textarea {
 
 /* Icon */
 
+
+
 	.icon {
 		text-decoration: none;
 		border-bottom: none;
@@ -895,19 +897,33 @@ input, select, textarea {
 
 /* Icons */
 
+.icon-container {
+	display: flex;
+	margin-top: 100px;
+	justify-content: center; /* centers the icons horizontally */
+	gap: 100px;               /* adds a 20px gap between each icon; adjust as needed */
+  }
+  #contact a {
+	display: inline-block;
+	margin: 0 15px;
+	font-size: 6rem; /* Adjust to the size you want */
+	color: inherit;  /* Keeps default color, adjust if needed */
+  }
+
 	ul.icons {
 		cursor: default;
 		list-style: none;
+		text-align: center;
 		padding-left: 0;
 	}
 
 		ul.icons li {
 			display: inline-block;
-			padding: 0 0.75em 0 0;
+			padding: 0 10em 0 0;
 		}
 
 			ul.icons li:last-child {
-				padding-right: 0;
+				padding-right: 10;
 			}
 
 			ul.icons li a {
@@ -917,6 +933,8 @@ input, select, textarea {
 				height: 2.25rem;
 				line-height: 2.25rem;
 				text-align: center;
+				font-size:6.5rem;
+				
 				width: 2.25rem;
 			}
 
@@ -1512,13 +1530,12 @@ input, select, textarea {
 				}
 
 		}
-/* Contact me form */
+/* My stuff */
 #contact {
-    background-color: rgba(255, 255, 255, 0.05); /* Light semi-transparent background */
-    color: #333; /* Dark text for better readability */
-    border-radius: 100px; /* Optional: adds rounded corners */
-   
+    margin-top: 0; /* Pushes it upwards */
+    margin-bottom: auto;
 }
+
 
 /* Main */
 
