@@ -1687,5 +1687,23 @@ input, select, textarea {
 			opacity: 0;
 		}
 		/* My and chatgpts crazy solutions*/
+		video{
+			display: block;
+		}
+		#headlineFix{
+			margin-top: 50px;
+			display: inline-block;
+			text-underline-offset: 4px;
+			text-decoration: underline;
+		}
 		
-		
+		.left{
+			width: 50%;
+			margin: auto;
+			float:left;
+		}
+		.right{
+			width: 50%;
+			margin: auto;
+			float:right
+		}
