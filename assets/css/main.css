@@ -1688,22 +1688,4 @@ input, select, textarea {
 		}
 		/* My and chatgpts crazy solutions*/
 		
-		  .popup-video {
-			display: none;
-			width: 500%;
-			height: auto;
-			position: absolute;
-			top: 100%; /* Below the text */
-			left: 0;
-			z-index: 10;
-			border: 2px solid #333;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		  }
-
-	#hover-container {
-    	position: relative;
-    	display: inline-block;
-  	}
-		  #hover-container:hover .popup-video {
-			display: block;
-		  }
+		
