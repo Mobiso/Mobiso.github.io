@@ -1,0 +1,36 @@
+baseURL = 'https://mobiso.github.io/'
+languageCode = 'en-us'
+title = 'Jens Jonsson Portfolio'
+theme="paper"
+
+[params]
+  # color style
+  color = 'linen'                           # linen, wheat, gray, light
+
+  # header social icons
+    github = 'Mobiso'                 # github.com/Mobiso
+    linkedin = 'jonssonjens'             # linkedin.com/in/jonssonjens
+  # home page profile
+  avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
+  name = 'Jens'
+  bio = 'A first-year master’s student at KTH studying Cybersecurity. I’ll update this whenever I do something cool at school… hey, that rhymed!'
+
+  [caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[menu]
+    [[menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about/"
+        weight = 10
+    [[menu.main]]
+        identifier = "projects"
+        name = "Projects"
+        url = "/projects/"
+        weight = 20
+
+   
+
+
