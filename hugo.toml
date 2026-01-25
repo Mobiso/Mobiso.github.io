@@ -1,7 +1,7 @@
 baseURL = 'https://mobiso.github.io/'
 languageCode = 'en-us'
 title = 'Jens Jonsson Portfolio'
-theme="paper"
+theme="hugo-paper"
 
 [params]
   # color style
