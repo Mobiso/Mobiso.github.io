@@ -2,10 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-02-10T17:19:18+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/picoctf_challanges/forensics/investigativereversing0/</loc>
+    <lastmod>2026-02-10T13:29:36+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/picoctf_challanges/</loc>
+    <lastmod>2026-02-10T13:29:36+01:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/projects/current_coursework/</loc>
     <lastmod>2026-01-25T19:55:05+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://localhost:1313/projects/</loc>
     <lastmod>2026-01-25T19:55:05+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/projects/bachelordegreeproject/</loc>
@@ -13,9 +22,6 @@
   </url><url>
     <loc>http://localhost:1313/projects/vattenfallgui/</loc>
     <lastmod>2026-01-25T19:15:57+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/projects/</loc>
-    <lastmod>2026-01-25T18:55:26+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/projects/klantboll/</loc>
     <lastmod>2026-01-25T18:47:26+01:00</lastmod>
