@@ -20,14 +20,13 @@
   />
 
   
-  <title>Current Coursework - Jens Jonsson Portfolio</title>
+  <title>Bachelor Degree Project: Password Generation using ambient sound - Jens Jonsson Portfolio</title>
 
   
   <meta name="theme-color" />
 
-  <meta name="description" content="Currently, I am taking a course in applied cryptography and a project course on building a secure network. I will update my website once I have written my reports and documentation.
-For the applied cryptography course, I have coded an implementation of AES in Rust and completed Set 1 of the Cryptopals challenges.
-I will also probably add some writeups for some picoCTF forensic flags once I have time." />
+  <meta name="description" content="My bachelor degree project that investigates if using regular ambient sound can be used to generate secure passwords.
+In short: it is not great. Using two computers to record audio simultaneously resulted in one computer showing terrible entropy according to the NIST 800-90B test suite, while the other showed great entropy. When using the recorded audio as an entropy source for our underlying hash-based RNG, our RNG passed the NIST 800-22 tests." />
   <meta name="author" content="Jens" /><link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.55f67b3b9482b33ca2648823a61f5e76f43181837316a5e844e85db17499eb47.css" integrity="sha256-VfZ7O5SCszyiZIgjph9edvQxgYNzFqXoROhdsXSZ60c=" />
 
   
@@ -162,21 +161,50 @@ I will also probably add some writeups for some picoCTF forensic flags once I ha
       class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
     ><article>
   <header class="mb-14">
-    <h1 class="my-0! pb-2.5">Current Coursework</h1><div class="text-xs antialiased opacity-60"><time>Jan 25, 2026</time></div></header>
+    <h1 class="my-0! pb-2.5">Bachelor Degree Project: Password Generation using ambient sound</h1><div class="text-xs antialiased opacity-60"><time>Jan 25, 2026</time></div></header>
 
-  <section><p>Currently, I am taking a course in applied cryptography and a project course on building a secure network. I will update my website once I have written my reports and documentation.</p>
-<p>For the applied cryptography course, I have coded an implementation of AES in Rust and completed Set 1 of the Cryptopals challenges.</p>
-<p>I will also probably add some writeups for some picoCTF forensic flags once I have time.</p>
+  <section><p>My bachelor degree project that investigates if using regular ambient sound can be used to generate secure passwords.</p>
+<p>In short: it is not great. Using two computers to record audio simultaneously resulted in one computer showing terrible entropy according to the NIST 800-90B test suite, while the other showed great entropy. When using the recorded audio as an entropy source for our underlying hash-based RNG, our RNG passed the NIST 800-22 tests. Passwords were not similar according to our amateur testing. We would advice against using this method to generate passwords.</p>
+<p><a href="https://www.diva-portal.org/smash/get/diva2:1989806/FULLTEXT01.pdf">Read it online</a></p>
+<h1 id="harnessing-ambient-sound-for-high-entropy-password-generation">Harnessing Ambient Sound for High-Entropy Password Generation</h1>
+<h2 id="abstract">Abstract</h2>
+<blockquote>
+<p>In the digital age of today passwords is the primary way of keeping your online
+accounts safe. One common way to generate and keep track of passwords are
+password managers. These managers often include pseudorandom password
+generators which are not truly random. A true random password generator is
+hosted by Random.org that offers true randomness as a service. The service
+utilizes the randomness of atmospheric noise as a source of entropy. This
+project looked at the feasibility of using the least significant bits found in
+ambient sound recordings as a source of entropy for password generation.
+A comparison was done with Random.org. Testing was done using the
+NIST SP 800-90B and NIST SP 800-22 test suite to estimate entropy and
+randomness. Adversarial resistance was tested by recording simultaneously
+and measuring the mutual information between generated passwords and
+collected least significant bits. The results revealed that the highest estimated
+percentage of the theoretical maximum entropy was 99.5%, slightly below
+Random.orgs lowest maximum entropy percentage (99.8%), and the lowest
+did not pass the 800-90B tests and was not awarded an estimate. To pass
+the NIST 800-22 test suite comparably to Random.org, a minimum of 64 bits
+per randomly generated integer were needed to be collected for a hash-based
+RNG. Per 16 bit audio sample, only extracting the least significant bit produced
+results comparable to Random.org in all recording scenarios. Produced user
+and adversary passwords had a minimum hamming distance of 7. Using bit
+strings of 640 concatenated least significant bits to pick 10 random symbols
+resulted in a minimum hamming distance of 266 between user and adversary
+bitstrings. Tests did not find any significant mutual information using the
+discovered optimal settings.</p>
+</blockquote>
 </section>
 
   <nav
     class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
-  ><a class="ltr:pr-3 rtl:pl-3" href="http://localhost:1313/projects/picoctf_challanges/investigativereversing0/"
-      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Investigative Reversing 0</span></a
+  ><a class="ltr:pr-3 rtl:pl-3" href="http://localhost:1313/projects/current_coursework/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Current Coursework</span></a
     ><a
       class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
-      href="http://localhost:1313/projects/bachelordegreeproject/"
-      ><span>Bachelor Degree Project: Password Generation using ambient sound</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+      href="http://localhost:1313/projects/vattenfallgui/"
+      ><span>Design of a prototype GUI for Vattenfall</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
     ></nav></article></main><footer
   class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
 >
