@@ -30,11 +30,6 @@ theme="hugo-paper"
         name = "Projects"
         url = "/projects/"
         weight = 20
-    [[menu.main]]
-      identifier = "Pico Flags"
-      name = "PicoCTF"
-      url = "/PicoCTF_Challanges/"
-      weight = 21
 
    
 

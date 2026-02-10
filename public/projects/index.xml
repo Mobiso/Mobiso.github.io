@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Jens Jonsson Portfolio</title>
+    <link>http://localhost:1313/projects/</link>
+    <description>Recent content in Projects on Jens Jonsson Portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Jan 2026 19:55:05 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Current Coursework</title>
+      <link>http://localhost:1313/projects/current_coursework/</link>
+      <pubDate>Sun, 25 Jan 2026 19:55:05 +0100</pubDate>
+      <guid>http://localhost:1313/projects/current_coursework/</guid>
+      <description>Currently, I am taking a course in applied cryptography and a project course on building a secure network. I will update my website once I have written my reports and documentation.&#xA;For the applied cryptography course, I have coded an implementation of AES in Rust and completed Set 1 of the Cryptopals challenges.&#xA;I will also probably add some writeups for some picoCTF forensic flags once I have time.</description>
+    </item>
+    <item>
+      <title>Bachelor Degree Project: Password Generation using ambient sound</title>
+      <link>http://localhost:1313/projects/bachelordegreeproject/</link>
+      <pubDate>Sun, 25 Jan 2026 19:31:10 +0100</pubDate>
+      <guid>http://localhost:1313/projects/bachelordegreeproject/</guid>
+      <description>My bachelor degree project that investigates if using regular ambient sound can be used to generate secure passwords.&#xA;In short: it is not great. Using two computers to record audio simultaneously resulted in one computer showing terrible entropy according to the NIST 800-90B test suite, while the other showed great entropy. When using the recorded audio as an entropy source for our underlying hash-based RNG, our RNG passed the NIST 800-22 tests.</description>
+    </item>
+    <item>
+      <title>Design of a prototype GUI for Vattenfall</title>
+      <link>http://localhost:1313/projects/vattenfallgui/</link>
+      <pubDate>Sun, 25 Jan 2026 19:15:57 +0100</pubDate>
+      <guid>http://localhost:1313/projects/vattenfallgui/</guid>
+      <description>A report, developed as part of a group project for Vattenfall, exploring and designing a prototype GUI aimed at raising awareness of energy consumption and promoting more sustainable usage practices.&#xA;Read the report&#xA;Research and Writing Contributions Eco-feedback Data representation </description>
+    </item>
+    <item>
+      <title>Klantboll</title>
+      <link>http://localhost:1313/projects/klantboll/</link>
+      <pubDate>Sun, 25 Jan 2026 18:47:26 +0100</pubDate>
+      <guid>http://localhost:1313/projects/klantboll/</guid>
+      <description> Your browser does not support the video tag. A game made from scratch by a team of 9 students using Scrum.&#xA;The game is about playing as a clumsy football player and picking up power-ups, but be careful some of them are rigged against you! Kick your way to victory!&#xA;Coded in C# and created in Unity.&#xA;Try it out!&#xA;Github&#xA;Game Development Responsibilities Kicking functionality Prototype movement Ragdoll functionality Animation switching Acting Product Owner </description>
+    </item>
+  </channel>
+</rss>
