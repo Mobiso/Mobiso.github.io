@@ -1,20 +1,24 @@
 baseURL = 'https://mobiso.github.io/'
 languageCode = 'en-us'
 title = 'Jens Jonsson Portfolio'
-theme="hugo-paper"
+theme="terminal"
 
 [params]
-  # color style
-  color = 'linen'                           # linen, wheat, gray, light
+   # dir name of your main content (default is `content/posts`).
+  # the list of set content will show up on your index page (baseurl).
+  contentTypeName = "posts"
 
-  # header social icons
-    github = 'Mobiso'                 # github.com/Mobiso
-    linkedin = 'jonssonjens'             # linkedin.com/in/jonssonjens
-  # home page profile
-  avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
-  name = 'Jens'
-  bio = 'A first-year master’s student at KTH studying Cybersecurity. I’ll update this whenever I do something cool at school… hey, that rhymed!'
+  # if you set this to 0, only submenu trigger will be visible
+  showMenuItems = 4
 
+  # show selector to switch language
+  showLanguageSelector = false
+
+  # set theme to full screen width
+  fullWidthTheme = true
+
+  # center theme with default width
+  centerTheme = true
   [caches]
   [caches.images]
     dir = ':cacheDir/images'
@@ -27,9 +31,19 @@ theme="hugo-paper"
         weight = 10
     [[menu.main]]
         identifier = "projects"
-        name = "Projects"
-        url = "/projects/"
+        name = "University Projects"
+        url = "/posts/projects/"
         weight = 20
+    [[menu.main]]
+        identifier = "ctf"
+        name = "CTF Flags"
+        url = "/posts/ctf/"
+        weight = 21
+    [[menu.main]]
+        identifier = "linkedin"
+        name = "LinkedIn"
+        url = "https://www.linkedin.com/in/jonssonjens/"
+        weight = 21
 
    
 
