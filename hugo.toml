@@ -32,7 +32,7 @@ theme="terminal"
     [[menu.main]]
         identifier = "projects"
         name = "University Projects"
-        url = "/posts/projects/"
+        url = "/posts/uni_projects/"
         weight = 20
     [[menu.main]]
         identifier = "ctf"

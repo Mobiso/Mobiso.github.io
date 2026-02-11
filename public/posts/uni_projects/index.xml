@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jens Jonsson Portfolio</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on Jens Jonsson Portfolio</description>
+    <title>University Projects on Jens Jonsson Portfolio</title>
+    <link>http://localhost:1313/posts/uni_projects/</link>
+    <description>Recent content in University Projects on Jens Jonsson Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Feb 2026 13:29:36 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Investigative Reversing 0</title>
-      <link>http://localhost:1313/posts/ctf/investigativereversing0/</link>
-      <pubDate>Tue, 10 Feb 2026 13:29:36 +0100</pubDate>
-      <guid>http://localhost:1313/posts/ctf/investigativereversing0/</guid>
-      <description>Author: Danny Tunitis&#xA;Description We have recovered a binary and an image. See what you can make of it. There should be a flag somewhere.&#xA;Solution First I loaded up the binary in Ghidra. Ghidra gave me some nice C code to work with and I began renaming variables that were obvious, such as arguments to the standard functions and what looked like for loops. This made it much easier to read.</description>
-    </item>
+    <lastBuildDate>Sun, 25 Jan 2026 19:55:05 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/uni_projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Current Coursework</title>
       <link>http://localhost:1313/posts/uni_projects/current_coursework/</link>
@@ -42,13 +35,6 @@
       <pubDate>Sun, 25 Jan 2026 18:47:26 +0100</pubDate>
       <guid>http://localhost:1313/posts/uni_projects/klantboll/</guid>
       <description> Your browser does not support the video tag. A game made from scratch by a team of 9 students using Scrum.&#xA;The game is about playing as a clumsy football player and picking up power-ups, but be careful some of them are rigged against you! Kick your way to victory!&#xA;Coded in C# and created in Unity.&#xA;Try it out!&#xA;Github&#xA;Game Development Responsibilities Kicking functionality Prototype movement Ragdoll functionality Animation switching Acting Product Owner </description>
-    </item>
-    <item>
-      <title>About</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Sun, 25 Jan 2026 18:03:32 +0100</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description>I am currently a student at the Royal Institute of Technology (KTH) in Sweden, working on my masters in Cybersecurity. Prior to my university studies, I worked at &amp;lsquo;Pålgård Söner och Kran AB&amp;rsquo; where I briefly started part time as IT support in their small office right after high school. From my high school studies I obtained a vocational degree as an IT technician.&#xA;After a short period, I was given the opportunity to broaden my role and joined the company as a crane operator fulltime.</description>
     </item>
   </channel>
 </rss>
