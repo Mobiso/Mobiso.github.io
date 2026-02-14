@@ -1,4 +1,6 @@
-<video autoplay muted loop playsinline width="100%">
-  <source src="{{ .Get 0 }}" type="video/webm">
+<video autoplay muted loop playsinline 
+       width="{{ .Get "width" }}" 
+       height="{{ .Get "height" }}">
+  <source src="{{ .Get "src" }}" type="video/webm">
   Your browser does not support the video tag.
 </video>

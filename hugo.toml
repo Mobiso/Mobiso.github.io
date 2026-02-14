@@ -35,9 +35,9 @@ theme="terminal"
         url = "/posts/uni_projects/"
         weight = 20
     [[menu.main]]
-        identifier = "ctf"
-        name = "CTF Flags"
-        url = "/posts/ctf/"
+        identifier = "chalflags"
+        name = "Challenges and Flags"
+        url = "/posts/challanges_flags/"
         weight = 21
     [[menu.main]]
         identifier = "linkedin"

@@ -4,7 +4,8 @@ date = 2026-01-25T18:47:26+01:00
 draft = false
 +++
 
-{{< video "/klantbollgameplay.webm" >}}
+{{< video src="/klantbollgameplay.webm" width="50%" height="auto" >}}
+
 
 
 A game made from scratch by a team of 9 students using Scrum.

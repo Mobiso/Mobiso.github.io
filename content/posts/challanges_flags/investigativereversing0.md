@@ -2,6 +2,7 @@
 title = 'Investigative Reversing 0'
 date = 2026-02-10T13:29:36+01:00
 draft = false
+description = "My write up for PicoCTF flag that was rated as Hard"
 +++
 >Author: Danny Tunitis
 >
