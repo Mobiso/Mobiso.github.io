@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/challanges_flags/fra_dungeon/</loc>
-    <lastmod>2026-02-14T10:48:23+01:00</lastmod>
+    <loc>http://localhost:1313/posts/challanges_flags/fra_kattastrofen/</loc>
+    <lastmod>2026-02-15T18:08:42+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-02-14T10:48:23+01:00</lastmod>
+    <lastmod>2026-02-15T18:08:42+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2026-02-15T18:08:42+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/challanges_flags/fra_dungeon/</loc>
     <lastmod>2026-02-14T10:48:23+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/challanges_flags/</loc>
