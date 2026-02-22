@@ -313,4 +313,26 @@ The pdf contains the flag:
 # Flag 3
 ¯\_(ツ)_/¯
 
-I am working on it.
+I am working on it. I found a reference to javascript in the strings found in the pdf file and a long hexstring. I decoded the hexstring and found:
+```
+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+.........
+```
+I had no clue what this was and if it was normal for a pdf.
+
+I asked chatgpt what it was and it told me about `JSFUCK`. This is a technique used to obsfucate javascript code. 
+
+I am on the right track for sure!
+
+Using an online decoder I found:
+
+```javscript
+const data = [0n, 16777216n, 963362762567186450219276n, 1227815285621149424943362n, 4251180420234710034485506n, 1227908978741191150735617n, 1228942000327703451209986n, 1229089574843243084713986n, 1229089574913611821027586n, 1276163323341699551654156n, 1170935903267323904n, 16393102643729268736n];
+if(0.1 + 0.2 == 0.3){
+  let str = "";   
+  for(let x of data){ 
+    str += x.toString(2).padStart(106, '0') + "\n";
+  }   
+  app.alert(str.replaceAll("0", " ").replaceAll("1", ")); 
+}
+```
+I have not gotten further than this at the time of writing.
