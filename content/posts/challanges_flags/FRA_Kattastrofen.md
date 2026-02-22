@@ -1,11 +1,11 @@
 +++
 title = "FRA Kattastrofen"
-date = "2026-02-22T18:08:42+01:00"
+date = "2026-02-22"
 #dateFormat = "2006-01-02" # This value can be configured for per-post date formatting
 
-description = "My writeup for FRA:s Kattastrofen challange"
+description = "My writeup for FRA:s Kattastrofen challange. Only managed 2 flags."
 showFullContent = false
-
+draft = false
 +++
 >En statstjänsteman på en skyddsvärd myndighet är svag för bilder på kattungar.
 >I sin iver att ta del av fler sådana bilder, har hen råkat ladda ned något som
@@ -305,7 +305,7 @@ for byte in encrypted:
     key_index += 1
     key_index = key_index % len(key)
 ```
-Which gave me a file that the `file` command says is: `data: POSIX tar archive (GNU)`.
+Which gave me a file that the `file` command says `data: POSIX tar archive (GNU)`.
 Using `tar -xf data -C extracted/` I find a pdf called `topphemligt.pdf`. Exciting!!!
 The pdf contains the flag:
 ![Flag 2 in a picture of a kitten](/FRA_Kattastrofen/flag2.png)

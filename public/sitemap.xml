@@ -2,44 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/challanges_flags/fra_kattastrofen/</loc>
-    <lastmod>2026-02-15T18:08:42+01:00</lastmod>
+    <loc>http://localhost:43477/posts/challanges_flags/fra_kattastrofen/</loc>
+    <lastmod>2026-02-21T18:08:42+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2026-02-15T18:08:42+01:00</lastmod>
+    <loc>http://localhost:43477/</loc>
+    <lastmod>2026-02-21T18:08:42+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2026-02-15T18:08:42+01:00</lastmod>
+    <loc>http://localhost:43477/posts/</loc>
+    <lastmod>2026-02-21T18:08:42+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/challanges_flags/fra_dungeon/</loc>
+    <loc>http://localhost:43477/posts/challanges_flags/fra_dungeon/</loc>
     <lastmod>2026-02-14T10:48:23+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/challanges_flags/</loc>
+    <loc>http://localhost:43477/posts/challanges_flags/</loc>
     <lastmod>2026-02-11T07:37:33+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/challanges_flags/investigativereversing0/</loc>
+    <loc>http://localhost:43477/posts/challanges_flags/investigativereversing0/</loc>
     <lastmod>2026-02-10T13:29:36+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/uni_projects/current_coursework/</loc>
+    <loc>http://localhost:43477/posts/uni_projects/current_coursework/</loc>
     <lastmod>2026-01-25T19:55:05+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/uni_projects/bachelordegreeproject/</loc>
+    <loc>http://localhost:43477/posts/uni_projects/bachelordegreeproject/</loc>
     <lastmod>2026-01-25T19:31:10+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/uni_projects/vattenfallgui/</loc>
+    <loc>http://localhost:43477/posts/uni_projects/vattenfallgui/</loc>
     <lastmod>2026-01-25T19:15:57+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/uni_projects/</loc>
+    <loc>http://localhost:43477/posts/uni_projects/</loc>
     <lastmod>2026-01-25T18:55:26+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/uni_projects/klantboll/</loc>
+    <loc>http://localhost:43477/posts/uni_projects/klantboll/</loc>
     <lastmod>2026-01-25T18:47:26+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://localhost:43477/about/</loc>
     <lastmod>2026-01-25T18:03:32+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>http://localhost:43477/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://localhost:43477/tags/</loc>
   </url>
 </urlset>
