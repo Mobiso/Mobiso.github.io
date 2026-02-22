@@ -176,7 +176,7 @@ This is my plan:
 ## Step 1 and 2
 Was done using `tshark -r kattastrofen.pcap -Y "dns&& ip.src==[VICTIM OR ATTACKER]" -T fields -e "dns.qry.name" > [VICTIM OR ATTACKER]`. 
 I also noticed that each packet could include multiple encoded sections seperated by a dot. 
-## Step 3, 4 and 5
+## Step 3, 4, 5
 I thought I would have to locate the byte that specified that it was a message but it seemed to work fine without doing that. The `dnscat2` data was also not encrypted.
 
 ```python
@@ -222,7 +222,7 @@ for line in server.readlines():
 server_decoded.write(''.join(server_lines))
 server_decoded.flush()
 ```
-## 6 
+## Step 6 and 7
 Using nano I removed everything but the base64:ed parts and decoded it. I created a python script to xor with the the key that I also decoded:
 ```python
 encrypted = open("victimDataEncrypted",'rb').read()

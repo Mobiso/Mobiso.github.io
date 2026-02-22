@@ -340,7 +340,7 @@ This is my plan:</p>
 <h2 id="step-1-and-2">Step 1 and 2<a href="#step-1-and-2" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 <p>Was done using <code>tshark -r kattastrofen.pcap -Y &quot;dns&amp;&amp; ip.src==[VICTIM OR ATTACKER]&quot; -T fields -e &quot;dns.qry.name&quot; &gt; [VICTIM OR ATTACKER]</code>.
 I also noticed that each packet could include multiple encoded sections seperated by a dot.</p>
-<h2 id="step-3-4-and-5">Step 3, 4 and 5<a href="#step-3-4-and-5" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h2 id="step-3-4-5">Step 3, 4, 5<a href="#step-3-4-5" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 <p>I thought I would have to locate the byte that specified that it was a message but it seemed to work fine without doing that. The <code>dnscat2</code> data was also not encrypted.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>victim <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;victim&#34;</span>)
 </span></span><span style="display:flex;"><span>server <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;server&#34;</span>)
@@ -383,7 +383,7 @@ I also noticed that each packet could include multiple encoded sections seperate
 </span></span><span style="display:flex;"><span>       
 </span></span><span style="display:flex;"><span>server_decoded<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(server_lines))
 </span></span><span style="display:flex;"><span>server_decoded<span style="color:#f92672">.</span>flush()
-</span></span></code></pre></div><h2 id="6">6<a href="#6" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+</span></span></code></pre></div><h2 id="step-6-and-7">Step 6 and 7<a href="#step-6-and-7" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 <p>Using nano I removed everything but the base64:ed parts and decoded it. I created a python script to xor with the the key that I also decoded:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>encrypted <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;victimDataEncrypted&#34;</span>,<span style="color:#e6db74">&#39;rb&#39;</span>)<span style="color:#f92672">.</span>read()
 </span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;key&#34;</span>,<span style="color:#e6db74">&#39;rb&#39;</span>)<span style="color:#f92672">.</span>read()
