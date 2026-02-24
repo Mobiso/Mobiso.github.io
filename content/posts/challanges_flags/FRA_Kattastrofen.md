@@ -79,7 +79,7 @@ EOM
 chmod +x mjau
 ./mjau cutekittenzz.xyz
 ```
-Decoding the long block of data with `base64 -d < mjauB64 > mjau` produced an `ELF` binary.
+Decoding the long block of base64 encoded data produced an `ELF` binary.
 
 After loading it into Ghidra, I noticed a lot of references to `dns` and general network activity. I did not fully understand the entire control flow, but it seemed unnecessary to reverse engineer the whole program. The presence of functions such as `can_i_transmit_yet` and `you_can_transmit_now` strongly suggested that it was establishing some kind of communication channel.
 
@@ -315,7 +315,7 @@ I found a reference to javascript in the strings found in the pdf file and a lon
 ```
 [][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+.........
 ```
-I had no clue what this was and if it was normal for a pdf.
+I had no clue what this was but javascript in a pdf seemed really suspicious. 
 
 I asked chatgpt what it was and it told me about `JSFUCK`. This is a technique used to obsfucate javascript code. 
 
