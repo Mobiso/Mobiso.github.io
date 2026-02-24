@@ -3,7 +3,7 @@ title = "FRA Kattastrofen"
 date = "2026-02-22"
 #dateFormat = "2006-01-02" # This value can be configured for per-post date formatting
 
-description = "My writeup for FRA:s Kattastrofen challange. Only managed 2 flags."
+description = "My writeup for FRA:s Kattastrofen challange. I found all 3 flags!"
 showFullContent = false
 draft = false
 +++
@@ -109,7 +109,7 @@ To be honest, my Bash skills are not the strongest, and I had never heard of `dn
 
 ## dnscat2
 
-`dnscat2` is a tool used to establish an encrypted command-and-control (C2) channel over the DNS protocol. Since most networks allow DNS traffic and often do not monitor it closely, DNS can be abused to create a covert remote connection or to exfiltrate data. This technique is commonly referred to as **DNS tunneling**, and `dnscat2` is an implementation of that technique.
+`dnscat2` is a tool used to establish an encrypted command-and-control (C2) channel over the DNS protocol. Since most networks allow DNS traffic and often do not monitor it closely, DNS can be abused to create a covert remote connection or to exfiltrate data. This technique is commonly referred to as `DNS tunneling`, and `dnscat2` is an implementation of that technique.
 
 ### How DNS tunneling works
 
@@ -119,13 +119,13 @@ DNS tunneling works by encoding data inside DNS queries. These queries are sent 
 
 When the malware sends this query, the local DNS resolver does not know the `MX` record for `<encoded_request>.hacker.com`. It then follows the normal DNS resolution process:
 
-1. The resolver queries a **root nameserver** to determine which servers are responsible for the `.com` top-level domain (TLD).
+1. The resolver queries a `root nameserver` to determine which servers are responsible for the `.com` top-level domain (TLD).
 2. The root server responds with `NS` records for the `.com` TLD servers.
 3. The resolver queries a `.com` TLD server to determine which authoritative nameservers are responsible for `hacker.com`.
 4. The TLD server responds with `NS` records for the authoritative nameservers of `hacker.com`.
 5. Finally, the resolver queries the authoritative nameserver for `hacker.com`.
 
-The critical detail is that the authoritative nameserver for `hacker.com` is attacker-controlled. When the query requests the `MX` record for `<encoded_request>.hacker.com`, the attacker-controlled server responds with something like:
+The thing is that the authoritative nameserver for `hacker.com` is attacker-controlled. When the query requests the `MX` record for `<encoded_request>.hacker.com`, the attacker-controlled server responds with something like:
 
 `<encoded_response>.hacker.com`
 
@@ -235,7 +235,7 @@ This was my plan:
 
 These steps were completed using:
 
-`tshark -r kattastrofen.pcap -Y "dns && ip.src==[VICTIM OR ATTACKER]" -T fields -e "dns.qry.name" > [VICTIM OR ATTACKER]`
+`tshark -r kattastrofen.pcap -Y "dns && ip.src==[VICTIM OR ATTACKER]" -T fields -e "[dns.qry.name/dns.mx.mail_exchange]" > [VICTIM OR ATTACKER]`
 
 I also noticed that each DNS packet could contain multiple encoded segments separated by dots. 
 
@@ -266,7 +266,7 @@ for line in victim.readlines():
                 victim_lines.append(decoded)
         
         except:
-            continue
+            continue 
        
 victim_decoded.write(''.join(victim_lines))
 victim_decoded.flush()
@@ -311,9 +311,7 @@ The pdf contains the flag:
 ![Flag 2 in a picture of a kitten](/FRA_Kattastrofen/flag2.png)
 
 # Flag 3
-¯\_(ツ)_/¯
-
-I am working on it. I found a reference to javascript in the strings found in the pdf file and a long hexstring. I decoded the hexstring and found:
+I found a reference to javascript in the strings found in the pdf file and a long hexstring. I decoded the hexstring and found:
 ```
 [][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+.........
 ```
@@ -332,7 +330,26 @@ if(0.1 + 0.2 == 0.3){
   for(let x of data){ 
     str += x.toString(2).padStart(106, '0') + "\n";
   }   
-  app.alert(str.replaceAll("0", " ").replaceAll("1", ")); 
+  app.alert(str.replaceAll("0", " ").replaceAll("1",".")); 
 }
 ```
-I have not gotten further than this at the time of writing.
+Additionally I suspected that the `if` condition will always be true. But turns out when I run it in an online javascript compiler the condition is not true, and this seems to be because of how javascript handles `floats`. For example a user on `freecodecamp.org` wondered why `2.05 * 100` was equal to `204.99999999999997` instead of `205`. 
+I decided to just remove the condition and let it print `str`. 
+
+And there it is, the third and final flag:
+```
+                                                                  .                        
+                          ..  ..                            ...     ..           .     .         .    ..  
+                         .     .                           .   .   .                  ..         .      . 
+                        ...    .    ...   ....  ....  ...      .   .   ....     ..   . . .   .   .      . 
+                         .     .       . .   . .   .     .   ..   .    . . .     .  .  . .   .   .       .
+                         .     .    .... .   . .   .  ....     .   .   . . .     . .   . .   .   .      . 
+                         .     .   .   . .   . .   . .   .     .   .   . . .     . ..... .   .          . 
+                         .     .   .   . .   . .   . .   . .   .   .   . . .     .     . .   .   .      . 
+                         .    ...   ....  ....  ....  ....  ...     .. . . .     .     .  ....   .    ..  
+                                             .     .                          .  .                        
+                                          ...   ...                            ..                         
+```
+It is a bit hard to see but it says: `flagga3{mj4u!}` (I think).
+
+

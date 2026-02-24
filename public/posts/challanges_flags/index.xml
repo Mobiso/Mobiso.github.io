@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CTF on Jens Jonsson Portfolio</title>
-    <link>http://localhost:43477/posts/challanges_flags/</link>
+    <link>http://localhost:1313/posts/challanges_flags/</link>
     <description>Recent content in CTF on Jens Jonsson Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Feb 2026 18:08:42 +0100</lastBuildDate>
-    <atom:link href="http://localhost:43477/posts/challanges_flags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/challanges_flags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FRA Kattastrofen</title>
-      <link>http://localhost:43477/posts/challanges_flags/fra_kattastrofen/</link>
-      <pubDate>Sat, 21 Feb 2026 18:08:42 +0100</pubDate>
-      <guid>http://localhost:43477/posts/challanges_flags/fra_kattastrofen/</guid>
+      <link>http://localhost:1313/posts/challanges_flags/fra_kattastrofen/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/challanges_flags/fra_kattastrofen/</guid>
       <description>En statstjänsteman på en skyddsvärd myndighet är svag för bilder på kattungar. I sin iver att ta del av fler sådana bilder, har hen råkat ladda ned något som inte var bra. Inte alls bra. Vi misstänker att skadlig kod har använts för att exfiltrera topphemlig data från myndigheten. Analysera nätverkstrafiken för att ta reda på vad som har hänt.&#xA;Utmaningen innehåller tre flaggor på formen /flagga[1-3]{[a-zå-ö0-9_!]+}/ - kan du hitta dem?</description>
     </item>
     <item>
       <title>FRA Dungeon</title>
-      <link>http://localhost:43477/posts/challanges_flags/fra_dungeon/</link>
+      <link>http://localhost:1313/posts/challanges_flags/fra_dungeon/</link>
       <pubDate>Sat, 14 Feb 2026 10:48:23 +0100</pubDate>
-      <guid>http://localhost:43477/posts/challanges_flags/fra_dungeon/</guid>
+      <guid>http://localhost:1313/posts/challanges_flags/fra_dungeon/</guid>
       <description>FRA PCAP Challenge våren 2013 Det är inte nödvändigt att besvara flera frågor.&#xA;Vad är flaggans absoluta position? Rita gärna en karta. Vad kan man säga om mjukvaran som används? Är det möjligt att säga något om utvecklaren? (BONUS) Hur säker kan man vara på att det endast finns en flagga? Opening up wireshark shows alot of traffic between two hosts. It actually consists of several streams, 6 to be exact.</description>
     </item>
     <item>
       <title>Investigative Reversing 0</title>
-      <link>http://localhost:43477/posts/challanges_flags/investigativereversing0/</link>
+      <link>http://localhost:1313/posts/challanges_flags/investigativereversing0/</link>
       <pubDate>Tue, 10 Feb 2026 13:29:36 +0100</pubDate>
-      <guid>http://localhost:43477/posts/challanges_flags/investigativereversing0/</guid>
+      <guid>http://localhost:1313/posts/challanges_flags/investigativereversing0/</guid>
       <description>Author: Danny Tunitis&#xA;Description We have recovered a binary and an image. See what you can make of it. There should be a flag somewhere.&#xA;Solution First I loaded up the binary in Ghidra. Ghidra gave me some nice C code to work with and I began renaming variables that were obvious, such as arguments to the standard functions and what looked like for loops. This made it much easier to read.</description>
     </item>
   </channel>
