@@ -245,7 +245,7 @@ samtliga flaggor!</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOM</span>
 </span></span><span style="display:flex;"><span>chmod +x mjau
 </span></span><span style="display:flex;"><span>./mjau cutekittenzz.xyz
-</span></span></code></pre></div><p>Decoding the long block of data with <code>base64 -d &lt; mjauB64 &gt; mjau</code> produced an <code>ELF</code> binary.</p>
+</span></span></code></pre></div><p>Decoding the long block of base64 encoded data produced an <code>ELF</code> binary.</p>
 <p>After loading it into Ghidra, I noticed a lot of references to <code>dns</code> and general network activity. I did not fully understand the entire control flow, but it seemed unnecessary to reverse engineer the whole program. The presence of functions such as <code>can_i_transmit_yet</code> and <code>you_can_transmit_now</code> strongly suggested that it was establishing some kind of communication channel.</p>
 <p>I also found several references to <code>dnscat</code>. Inspecting the <code>usage</code> function appeared to confirm that this was indeed a <code>dnscat2</code> binary.</p>
 <p><img src="/FRA_Kattastrofen/dnscatusage.png" alt="dnscat2 usage function"></p>
@@ -431,7 +431,7 @@ The pdf contains the flag:
 <h1 id="flag-3">Flag 3<a href="#flag-3" class="hanchor" ariaLabel="Anchor">#</a> </h1>
 <p>I found a reference to javascript in the strings found in the pdf file and a long hexstring. I decoded the hexstring and found:</p>
 <pre tabindex="0"><code>[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+.........
-</code></pre><p>I had no clue what this was and if it was normal for a pdf.</p>
+</code></pre><p>I had no clue what this was but javascript in a pdf seemed really suspicious.</p>
 <p>I asked chatgpt what it was and it told me about <code>JSFUCK</code>. This is a technique used to obsfucate javascript code.</p>
 <p>I am on the right track for sure!</p>
 <p>Using an online decoder I found:</p>

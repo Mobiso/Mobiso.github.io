@@ -6,14 +6,14 @@
     <description>Recent content in University Projects on Jens Jonsson Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Jan 2026 19:55:05 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2026 16:01:18 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/uni_projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Current Coursework</title>
-      <link>http://localhost:1313/posts/uni_projects/current_coursework/</link>
-      <pubDate>Sun, 25 Jan 2026 19:55:05 +0100</pubDate>
-      <guid>http://localhost:1313/posts/uni_projects/current_coursework/</guid>
-      <description>Currently, I am taking a course in applied cryptography and a project course on building a secure network. I will update my website once I have written my reports and documentation.&#xA;For the applied cryptography course, I have coded an implementation of AES in Rust and completed Set 1 of the Cryptopals challenges.&#xA;I will also probably add some writeups for some picoCTF forensic flags once I have time.</description>
+      <title>Building Networked Systems Security Project</title>
+      <link>http://localhost:1313/posts/uni_projects/building_secure_networks/</link>
+      <pubDate>Fri, 03 Apr 2026 16:01:18 +0200</pubDate>
+      <guid>http://localhost:1313/posts/uni_projects/building_secure_networks/</guid>
+      <description>I was part of 5-person team tasked by a fictional company named &amp;ldquo;ACME&amp;rdquo; to setup a secure network for their company. We were given a list of requirements and a general description (I am unsure of if I am allowed to copy and paste it here, so just to be sure I wont). Our job was to analyze these requirements and impliment a functional network solution.&#xA;I was responsible for implimenting Keycloak, Grafana and Grafana Loki, Promtail, an LLM log analyzer pipeline and a so called critical webserver.</description>
     </item>
     <item>
       <title>Bachelor Degree Project: Password Generation using ambient sound</title>
